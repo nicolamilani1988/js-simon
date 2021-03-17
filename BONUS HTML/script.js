@@ -22,12 +22,10 @@ function init(){
 var my5Numbers = getRndDifferentNumbers (1,20,5);
 var myH3 = document.getElementById("principal-numbers");
 var myBtn = document.getElementById("number-generator");
-var myInput = document.getElementById("choose-number");
+var myInputs = document.getElementsByClassName("choose-number");
 var sec;
 var clock;
 var myCheck = document.getElementById("button-check");
-var insertedStr;
-var insertedNumber;
 
 
 // funzione per generare 5 numeri buoni
@@ -53,14 +51,18 @@ function getRndDifferentNumbers (min,max,totLength){
 }
 
 
-// funzione per interrompere countdown, nascondere i numeri e generare input
+// funzione per interrompere countdown, nascondere i numeri e mostrare input
 function tick(){
   document.getElementById("timer").innerHTML = sec--;
   if(sec < 0){
     clearInterval(clock);
     document.getElementById("timer").innerHTML = "STOP";
     myH3.innerHTML = "NUMERI NASCOSTI";
-    myInput.style.visibility = 'visible';
+    for(var i=0;i<myInputs.length;i++){
+      var myInput = myInputs[i];
+      myInput.style.visibility = 'visible';
+    }
+
   }
 }
 
@@ -98,8 +100,8 @@ function insertNumber(){
 function validateNumber(){
 
   var inputtedNumbers = [];
-  insertedStr = document.getElementById("choose-number").value;
-  insertedNumber = parseInt(insertedStr);
+  var insertedStr = document.getElementById("choose-number").value;
+  var insertedNumber = parseInt(insertedStr);
 
 
 
@@ -109,7 +111,7 @@ function validateNumber(){
       inputtedNumbers.push(insertedNumber);
     }
 
-  console.log("numeri ok :" , my5Numbers, "numero inserito :", insertedNumber);
+  console.log("numeri ok :" , my5Numbers, "numeri inseriti :", inputtedNumbers);
   // return (inputtedNumbers.length);
 
 }
