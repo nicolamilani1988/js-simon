@@ -35,11 +35,13 @@ function insertNumber(){
   }
   console.log("num utente ",userNumbers);
 
-  if(casualNumbers.includes(userNumbers[0])){
-    console.log("ci siamo")
-  }else {
-    console.log("non ci siamo");
+  var okNumbers =[];
+  for(var i=0;i<userNumbers.length;i++){
+    if(casualNumbers.includes(userNumbers[i])){
+      okNumbers.push(userNumbers[i]);
+    }
   }
+  console.log(okNumbers);
 
 }
 
