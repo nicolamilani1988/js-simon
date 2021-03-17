@@ -112,7 +112,16 @@ function validateNumber(){
   }
 
   console.log("numeri ok :" , my5Numbers, "numeri inseriti :", inputtedNumbers);
-  
+
+  var okNumbers =[];
+  for(var i=0;i<inputtedNumbers.length;i++){
+    if(my5Numbers.includes(inputtedNumbers[i])){
+      okNumbers.push(inputtedNumbers[i]);
+    }
+  }
+
+  console.log("NUMERI IN COMUNE ",okNumbers);
+
 
 }
 
