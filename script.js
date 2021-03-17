@@ -1,8 +1,3 @@
-// Un alert() espone 5 numeri generati casualmente.
-// Da li parte un timer di 30 secondi.
-// Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
-// Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
-
 // funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
 function getRndDifferentNumbers (min,max, totLength){
 
@@ -29,9 +24,13 @@ function getRndDifferentNumbers (min,max, totLength){
 
 function insertNumber(){
   var userNumbers = [];
-  for(var i=0;i<5;i++){
+  while(userNumbers.length < 5){
     var userNumber = parseInt(prompt("Dammi un numero"));
-    userNumbers.push(userNumber);
+    if(userNumbers.indexOf(userNumber) >=0 || Number.isNaN(userNumber)){
+      alert("dammi numero nuovo");
+    } else {
+      userNumbers.push(userNumber);
+    }
   }
   console.log("num utente ",userNumbers);
 
@@ -46,7 +45,7 @@ function insertNumber(){
 }
 
 function timeout(){
-  setTimeout(insertNumber, 2000);
+  var waitingTime = setTimeout(insertNumber, 2000);
 }
 
 
