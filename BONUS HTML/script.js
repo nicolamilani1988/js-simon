@@ -1,51 +1,16 @@
-var casualNumbers;
-
-// funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
-
-
-
-
-function init(){
-  casualNumbers =  getRndDifferentNumbers(1,20,5);
-  console.log(casualNumbers);
-  var casualNumbersMessage = alert("Numeri: " + casualNumbers);
-  var waitingTime = setTimeout(insertNumber, 30*1000);
-}
-
-// init();
-
-
-
-
-
-// VAR FISSE
-var my5Numbers = getRndDifferentNumbers (1,20,5);
-var myH3 = document.getElementById("principal-numbers");
-var myInputs = document.getElementsByClassName("choose-number");
-var sec;
-var clock;
-
-
 // funzione per generare 5 numeri buoni
 function getRndDifferentNumbers (min,max,totLength){
-
   var arrayTot = [];
   var array = [];
-
   do{
-
     var numRnd = Math.floor(Math.random()*max)+min;
     var index = arrayTot.indexOf(numRnd);
     arrayTot.push(numRnd);
-
     if (index == -1){
         array.push(numRnd)
       }
-
   }  while (array.length < totLength)
-
   return array;
-
 }
 
 
@@ -60,7 +25,6 @@ function tick(){
       var myInput = myInputs[i];
       myInput.style.visibility = 'visible';
     }
-
   }
 }
 
@@ -106,6 +70,14 @@ function validateNumber(){
 
 
 }
+
+
+// VAR FISSE
+var my5Numbers = getRndDifferentNumbers (1,20,5);
+var myH3 = document.getElementById("principal-numbers");
+var myInputs = document.getElementsByClassName("choose-number");
+var sec;
+var clock;
 
 // FUNZIONI BOTTONE PER GENERARE NUMERI CHE POI SI VANNO A NASCONDERE, RESTITUENDOMI INPUT
 var myBtn = document.getElementById("number-generator");
