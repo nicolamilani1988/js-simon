@@ -20,6 +20,18 @@ body{
 
 p{
   text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+.principal-numbers{
+  width: 80%;
+  margin: auto;
+}
+
+#principal-numbers{
+  border: 1px solid red;
+  padding: 10px;
+  
 }
 
 #number-generator, #button-check{
