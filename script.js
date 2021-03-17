@@ -1,3 +1,5 @@
+var casualNumbers;
+
 // funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
 function getRndDifferentNumbers (min,max, totLength){
 
@@ -40,16 +42,17 @@ function insertNumber(){
       okNumbers.push(userNumbers[i]);
     }
   }
-  console.log(okNumbers);
-
-}
-
-function timeout(){
-  var waitingTime = setTimeout(insertNumber, 2000);
+  console.log("hai indovinato i seguenti numeri :" , okNumbers);
+  var result = okNumbers.length;
+  console.log("hai memorizzato ", result, " numeri");
 }
 
 
-var casualNumbers =  getRndDifferentNumbers(1,20,5);
-console.log(casualNumbers);
-var casualNumbersMessage = alert("Numeri: " + casualNumbers);
-timeout();
+function init(){
+  casualNumbers =  getRndDifferentNumbers(1,20,5);
+  console.log(casualNumbers);
+  var casualNumbersMessage = alert("Numeri: " + casualNumbers);
+  var waitingTime = setTimeout(insertNumber, 30*1000);
+}
+
+init();
