@@ -1,16 +1,14 @@
 var casualNumbers;
 
 // funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
-function getRndDifferentNumbers (min,max, totLength){
+function getRndDifferentNumbers (){
 
   var arrayTot = [];
   var array = [];
 
   do{
 
-    var minRnd = min;
-    var maxRnd = max - minRnd + 1;
-    var numRnd = Math.floor(Math.random()*maxRnd)+minRnd;
+    var numRnd = Math.floor(Math.random()*20)+1;
     var index = arrayTot.indexOf(numRnd);
     arrayTot.push(numRnd);
 
@@ -18,9 +16,9 @@ function getRndDifferentNumbers (min,max, totLength){
         array.push(numRnd)
       }
 
-  }  while (array.length < totLength)
+  }  while (array.length < 5)
 
-  return array;
+  myH3.innerHTML = array;
 
 }
 
@@ -55,4 +53,10 @@ function init(){
   var waitingTime = setTimeout(insertNumber, 30*1000);
 }
 
-init();
+// init();
+
+// var number = document.getElementById("input-1").value;
+var myH3 = document.getElementById("principal-numbers");
+var myBtn = document.getElementById("number-generator");
+
+myBtn.addEventListener("click", getRndDifferentNumbers);
