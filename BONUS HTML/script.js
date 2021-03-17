@@ -3,6 +3,75 @@ var casualNumbers;
 // funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
 
 
+
+
+function init(){
+  casualNumbers =  getRndDifferentNumbers(1,20,5);
+  console.log(casualNumbers);
+  var casualNumbersMessage = alert("Numeri: " + casualNumbers);
+  var waitingTime = setTimeout(insertNumber, 30*1000);
+}
+
+// init();
+
+
+
+
+
+// VAR FISSE
+var my5Numbers = getRndDifferentNumbers (1,20,5);
+var myH3 = document.getElementById("principal-numbers");
+var myBtn = document.getElementById("number-generator");
+var myInput = document.getElementById("choose-number");
+var sec;
+var clock;
+var myCheck = document.getElementById("button-check");
+var insertedStr;
+var insertedNumber;
+
+
+// funzione per generare 5 numeri buoni
+function getRndDifferentNumbers (min,max,totLength){
+
+  var arrayTot = [];
+  var array = [];
+
+  do{
+
+    var numRnd = Math.floor(Math.random()*max)+min;
+    var index = arrayTot.indexOf(numRnd);
+    arrayTot.push(numRnd);
+
+    if (index == -1){
+        array.push(numRnd)
+      }
+
+  }  while (array.length < totLength)
+
+  return array;
+
+}
+
+
+// funzione per interrompere countdown, nascondere i numeri e generare input
+function tick(){
+  document.getElementById("timer").innerHTML = sec--;
+  if(sec < 0){
+    clearInterval(clock);
+    document.getElementById("timer").innerHTML = "STOP";
+    myH3.innerHTML = "NUMERI NASCOSTI";
+    myInput.style.visibility = 'visible';
+  }
+}
+
+
+// funzione per far partire countdown
+function countdown(){
+  sec = 4;
+  clock = setInterval(tick, 1000);
+}
+
+
 function insertNumber(){
   var userNumbers = [];
   while(userNumbers.length < 5){
@@ -26,68 +95,38 @@ function insertNumber(){
   console.log("hai memorizzato ", result, " numeri");
 }
 
+function validateNumber(){
 
-function init(){
-  casualNumbers =  getRndDifferentNumbers(1,20,5);
-  console.log(casualNumbers);
-  var casualNumbersMessage = alert("Numeri: " + casualNumbers);
-  var waitingTime = setTimeout(insertNumber, 30*1000);
-}
-
-// init();
+  var inputtedNumbers = [];
+  insertedStr = document.getElementById("choose-number").value;
+  insertedNumber = parseInt(insertedStr);
 
 
 
+    if (Number.isNaN(insertedNumber)){
+      alert ("numero non valido, scrivine un altro");
+    } else {
+      inputtedNumbers.push(insertedNumber);
+    }
 
-
-
-
-
-
-function getRndDifferentNumbers (min,max,totLength){
-
-  var arrayTot = [];
-  var array = [];
-
-  do{
-
-    var numRnd = Math.floor(Math.random()*max)+min;
-    var index = arrayTot.indexOf(numRnd);
-    arrayTot.push(numRnd);
-
-    if (index == -1){
-        array.push(numRnd)
-      }
-
-  }  while (array.length < totLength)
-
-  myH3.innerHTML = array;
+  console.log("numeri ok :" , my5Numbers, "numero inserito :", insertedNumber);
+  // return (inputtedNumbers.length);
 
 }
 
-// var number = document.getElementById("input-1").value;
-var myH3 = document.getElementById("principal-numbers");
-var myBtn = document.getElementById("number-generator");
-var sec;
-var clock;
-
-function tick(){
-  document.getElementById("timer").innerHTML = sec--;
-  if(sec < 0){
-    document.getElementById("timer").innerHTML = "STOP";
-  }
-}
-
-function countdown(){
-  sec = 4;
-  clock = setInterval(tick, 1000);
-}
-
+// FUNZIONI BOTTONE PER GENERARE NUMERI CHE POI SI VANNO A NASCONDERE, RESTITUENDOMI INPUT
 myBtn.addEventListener("click", function(){
 
-  getRndDifferentNumbers (1,20,5);
+  myH3.innerHTML = my5Numbers;
   countdown();
 
 });
 
-// var waitingTime = setTimeout(hideNumbers,1000);
+
+// BOTTONE VERIFICA NUMERI CORRETTI
+myCheck.addEventListener("click" , function(){
+
+  validateNumber();
+
+
+});

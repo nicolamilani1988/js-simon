@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Simon Says</title>
+    <style media="screen">
+      ul li{
+        list-style-type: none;
+      }
+
+    </style>
   </head>
 
   <body>
@@ -12,11 +18,36 @@
     <h3 id="principal-numbers">Clicca e memorizza i numeri che appariranno qui</h3>
     <h3 id="timer">5</h3>
 
-    <input id= "input-1" type="text" name="" value="ciaociao" >
-    <input type="text" name="" >
-    <input type="text" name="" >
-    <input type="text" name="" >
-    <input type="text" name="" >
+    <div id="input-part">
+
+      <ul>
+        <li>
+          <input style="visibility:hidden;" id="choose-number" type="text" name="" value="" placeholder="inserisci numero">
+        </li>
+        <li>
+          <input type="text" name="" value="" placeholder="inserisci numero">
+        </li>
+        <li>
+          <input type="text" name="" value="" placeholder="inserisci numero">
+        </li>
+        <li>
+          <input type="text" name="" value="" placeholder="inserisci numero">
+        </li>
+        <li>
+          <input type="text" name="" value="" placeholder="inserisci numero">
+        </li>
+      </ul>
+
+    </div>
+
+
+
+    <div class="">
+      <button id="button-check" type="button" name="button">CLICCA PER CONTROLLARE</button>
+    </div>
+
+
+    <h3 id="results">Num indovinati</h3>
 
     <script type="text/javascript" src="script.js"></script>
 
