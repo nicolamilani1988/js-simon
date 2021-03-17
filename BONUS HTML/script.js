@@ -1,4 +1,4 @@
-// funzione per generare 5 numeri buoni
+// funzione per generare 5 numeri diversi
 function getRndDifferentNumbers (min,max,totLength){
   var arrayTot = [];
   var array = [];
@@ -11,6 +11,13 @@ function getRndDifferentNumbers (min,max,totLength){
       }
   }  while (array.length < totLength)
   return array;
+}
+
+
+// funzione per far partire countdown
+function countdown(){
+  sec = 4;
+  clock = setInterval(tick, 1000);
 }
 
 
@@ -29,31 +36,41 @@ function tick(){
 }
 
 
-// funzione per far partire countdown
-function countdown(){
-  sec = 4;
-  clock = setInterval(tick, 1000);
-}
-
-
 // funzione per estrarre num input e confrontarli con i 5
 function validateNumber(){
 
   var insertedValues = document.getElementsByClassName("choose-number");
-  var inputtedNumbers = [];
+  inputtedNumbers = [];
 
   for(var i=0;i<insertedValues.length;i++){
 
     var insertedValue = parseInt(insertedValues[i].value);
-    if (Number.isNaN(insertedValue)){
-      alert ("numero non valido, scrivine un altro");
-    } else {
+    if (!Number.isNaN(insertedValue)){
       inputtedNumbers.push(insertedValue);
     }
 
   }
 
   console.log("numeri ok :" , my5Numbers, "numeri inseriti :", inputtedNumbers);
+  return inputtedNumbers;
+
+}
+
+
+// funzione per verificare valori inseriti e ridarmi risultati
+function verifica(){
+
+  if(inputtedNumbers.length<5){
+    alert("Non tutti i valori inseriti sono corretti: ricontrolla");
+  } else {
+    results();
+  }
+
+}
+
+
+// funzione per stampare risultato
+function results(){
 
   var okNumbers =[];
   for(var i=0;i<inputtedNumbers.length;i++){
@@ -68,7 +85,6 @@ function validateNumber(){
       document.getElementById("results").innerHTML = "Numeri indovinati: " + okNumbers;
     }
 
-
 }
 
 
@@ -78,6 +94,8 @@ var myH3 = document.getElementById("principal-numbers");
 var myInputs = document.getElementsByClassName("choose-number");
 var sec;
 var clock;
+var inputtedNumbers;
+
 
 // FUNZIONI BOTTONE PER GENERARE NUMERI CHE POI SI VANNO A NASCONDERE, RESTITUENDOMI INPUT
 var myBtn = document.getElementById("number-generator");
@@ -94,6 +112,5 @@ var myCheck = document.getElementById("button-check");
 myCheck.addEventListener("click" , function(){
 
   validateNumber();
-
-
+  verifica();
 });
