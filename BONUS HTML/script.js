@@ -1,26 +1,7 @@
 var casualNumbers;
 
 // funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
-function getRndDifferentNumbers (){
 
-  var arrayTot = [];
-  var array = [];
-
-  do{
-
-    var numRnd = Math.floor(Math.random()*20)+1;
-    var index = arrayTot.indexOf(numRnd);
-    arrayTot.push(numRnd);
-
-    if (index == -1){
-        array.push(numRnd)
-      }
-
-  }  while (array.length < 5)
-
-  myH3.innerHTML = array;
-
-}
 
 function insertNumber(){
   var userNumbers = [];
@@ -55,8 +36,58 @@ function init(){
 
 // init();
 
+
+
+
+
+
+
+
+
+function getRndDifferentNumbers (min,max,totLength){
+
+  var arrayTot = [];
+  var array = [];
+
+  do{
+
+    var numRnd = Math.floor(Math.random()*max)+min;
+    var index = arrayTot.indexOf(numRnd);
+    arrayTot.push(numRnd);
+
+    if (index == -1){
+        array.push(numRnd)
+      }
+
+  }  while (array.length < totLength)
+
+  myH3.innerHTML = array;
+
+}
+
 // var number = document.getElementById("input-1").value;
 var myH3 = document.getElementById("principal-numbers");
 var myBtn = document.getElementById("number-generator");
+var sec;
+var clock;
 
-myBtn.addEventListener("click", getRndDifferentNumbers);
+function tick(){
+  document.getElementById("timer").innerHTML = sec--;
+  if(sec < 0){
+    document.getElementById("timer").innerHTML = "STOP";
+  }
+}
+
+function countdown(){
+  sec = 4;
+  clock = setInterval(tick, 1000);
+}
+
+myBtn.addEventListener("click", function(){
+
+  getRndDifferentNumbers (1,20,5);
+  countdown();
+
+});
+
+// var waitingTime = setTimeout(hideNumbers,1000);
