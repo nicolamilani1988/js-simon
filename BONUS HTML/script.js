@@ -54,7 +54,7 @@ function tick(){
   document.getElementById("timer").innerHTML = sec--;
   if(sec < 0){
     clearInterval(clock);
-    document.getElementById("timer").innerHTML = "STOP";
+    document.getElementById("timer").innerHTML = "Scrivi i numeri che hai memorizzato";
     myH3.innerHTML = "NUMERI NASCOSTI";
     for(var i=0;i<myInputs.length;i++){
       var myInput = myInputs[i];
@@ -72,29 +72,7 @@ function countdown(){
 }
 
 
-function insertNumber(){
-  var userNumbers = [];
-  while(userNumbers.length < 5){
-    var userNumber = parseInt(prompt("Dammi un numero"));
-    if(userNumbers.indexOf(userNumber) >=0 || Number.isNaN(userNumber)){
-      alert("dammi numero nuovo");
-    } else {
-      userNumbers.push(userNumber);
-    }
-  }
-  console.log("num utente ",userNumbers);
-
-  var okNumbers =[];
-  for(var i=0;i<userNumbers.length;i++){
-    if(casualNumbers.includes(userNumbers[i])){
-      okNumbers.push(userNumbers[i]);
-    }
-  }
-  console.log("hai indovinato i seguenti numeri :" , okNumbers);
-  var result = okNumbers.length;
-  console.log("hai memorizzato ", result, " numeri");
-}
-
+// funzione per estrarre num input e confrontarli con i 5
 function validateNumber(){
 
   var insertedValues = document.getElementsByClassName("choose-number");
@@ -120,7 +98,11 @@ function validateNumber(){
     }
   }
 
-  console.log("NUMERI IN COMUNE ",okNumbers);
+    if(okNumbers.length == 0){
+      document.getElementById("results").innerHTML = "Numeri indovinati: Nessuno";
+    } else {
+      document.getElementById("results").innerHTML = "Numeri indovinati: " + okNumbers;
+    }
 
 
 }

@@ -1,0 +1,39 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  }
+
+body{
+  font-family: 'Verdana';
+  color: blue;
+}
+
+.container{
+  border: 1px solid black;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding: 30px 0;
+  background-color: #FEFE9C;
+}
+
+p{
+  text-decoration: underline;
+}
+
+#number-generator, #button-check{
+  margin: 20px 0;
+  padding: 10px;
+  background-color: orange;
+  color:red;
+  border: 2px solid red;
+}
+
+#timer{
+  margin-bottom: 20px;
+}
+
+ul li{
+  list-style-type: none;
+}
