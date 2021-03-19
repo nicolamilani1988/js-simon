@@ -1,15 +1,17 @@
 // funzione per generare 5 numeri diversi
 function getRndDifferentNumbers (min,max,totLength){
-  var arrayTot = [];
   var array = [];
-  do{
-    var numRnd = Math.floor(Math.random()*max)+min;
-    var index = arrayTot.indexOf(numRnd);
-    arrayTot.push(numRnd);
+  while (array.length < totLength){
+
+    var minRnd = min;
+    var maxRnd = max - minRnd + 1;
+    var numRnd = Math.floor(Math.random()*maxRnd)+minRnd;
+    var index = array.indexOf(numRnd);
+
     if (index == -1){
         array.push(numRnd)
       }
-  }  while (array.length < totLength)
+  }
   return array;
 }
 

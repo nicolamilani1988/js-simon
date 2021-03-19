@@ -2,23 +2,20 @@ var casualNumbers;
 
 // funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
 function getRndDifferentNumbers (min,max, totLength){
-
-  var arrayTot = [];
   var array = [];
 
-  do{
+  while (array.length < totLength){
 
     var minRnd = min;
     var maxRnd = max - minRnd + 1;
     var numRnd = Math.floor(Math.random()*maxRnd)+minRnd;
-    var index = arrayTot.indexOf(numRnd);
-    arrayTot.push(numRnd);
+    var index = array.indexOf(numRnd);
 
     if (index == -1){
         array.push(numRnd)
       }
 
-  }  while (array.length < totLength)
+  }
 
   return array;
 
@@ -52,7 +49,7 @@ function init(){
   casualNumbers =  getRndDifferentNumbers(1,20,5);
   console.log(casualNumbers);
   var casualNumbersMessage = alert("Numeri: " + casualNumbers);
-  var waitingTime = setTimeout(insertNumber, 30*1000);
+  var waitingTime = setTimeout(insertNumber, 3*1000);
 }
 
 init();
